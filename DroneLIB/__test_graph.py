@@ -5,10 +5,10 @@ from droneConstructor import Drone
 # Create a drone instance
 drone = Drone()
 
-# Set drone parameters
-drone.mass = 1.0
-drone.thrust_coefficient = 0.1
-drone.drag_coefficient = 0.01
+# Set drone parameters for stability
+drone.mass = 0.5
+drone.thrust_coefficient = 0.8
+drone.drag_coefficient = 0.1
 
 # Set simulation parameters
 total_simulation_time = 10.0  # total simulation time in seconds
@@ -22,7 +22,7 @@ num_steps = int(total_simulation_time / dt)
 
 for step in range(num_steps):
     # Generate random throttle command between 0 and 1
-    throttle_command = random.uniform(0.0, 1.0)
+    throttle_command = random.uniform(0.5, 1.0)
 
     # Simulate one time step with the random throttle command
     drone.simulate(dt, throttle_command)
