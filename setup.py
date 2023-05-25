@@ -4,14 +4,14 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="example-pkg-your-username",
+    name="DroneLIB",
     version="0.0.1",
-    author="Example Author",
-    author_email="author@example.com",
-    description="A small example package",
+    author="Ryan Rudd",
+    author_email="ryan.ruddd@gmail.com",
+    description="DroneLib is a Python library that leverages physics-based calculations to approximate the movement and predict the physics of bimotored RPAS, enabling accurate simulations and insights into drone dynamics.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    url="https://github.com/Ryan-Rudd/DroneLIB",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -19,3 +19,4 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
 )
+
