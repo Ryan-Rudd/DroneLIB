@@ -1,29 +1,35 @@
-import matplotlib.pyplot as plt 
+import random
+import matplotlib.pyplot as plt
 from droneConstructor import Drone
 
-drone= Drone()
+# Create a drone instance
+drone = Drone()
 
-throttle_command = 0.5
+# Set drone parameters
+drone.mass = 1.0
+drone.thrust_coefficient = 0.1
+drone.drag_coefficient = 0.01
 
 # Set simulation parameters
 total_simulation_time = 10.0  # total simulation time in seconds
-dt = 0.01  # time step size
 
-# Number of time steps
+# Simulate the flight and obtain altitude data
+altitude_data = []
+time_data = []
+
+dt = 0.01  # time step size
 num_steps = int(total_simulation_time / dt)
 
-# Lists to store simulation data
-time_data = []
-altitude_data = []
-
-# Simulate the drone
 for step in range(num_steps):
-    # Simulate one time step
+    # Generate random throttle command between 0 and 1
+    throttle_command = random.uniform(0.0, 1.0)
+
+    # Simulate one time step with the random throttle command
     drone.simulate(dt, throttle_command)
-    
-    # Store simulation data
-    time_data.append(step * dt)
+
+    # Store altitude and time data
     altitude_data.append(drone.position[2])
+    time_data.append(step * dt)
 
 # Plot altitude over time
 plt.figure(figsize=(10, 5))
@@ -33,3 +39,9 @@ plt.ylabel('Altitude (m)')
 plt.title('Drone Altitude over Time')
 plt.grid(True)
 plt.show()
+
+# Analyze stability
+drone.analyze_stability()
+
+# Evaluate performance
+drone.evaluate_performance()
